@@ -188,8 +188,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LibraryController.cs" />
+    <Compile Include="Controllers\LibraryItemController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -290,11 +291,17 @@
     <Compile Include="Migrations\201309152359177_Initial23.Designer.cs">
       <DependentUpon>201309152359177_Initial23.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201309160612303_Initial24.cs" />
+    <Compile Include="Migrations\201309160612303_Initial24.Designer.cs">
+      <DependentUpon>201309160612303_Initial24.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Area.cs" />
     <Compile Include="Models\CheckoutEquipmentTicket.cs" />
     <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\Guardian.cs" />
@@ -303,6 +310,7 @@
     <Compile Include="Models\LibraryModels.cs" />
     <Compile Include="Models\PhoneNumber.cs" />
     <Compile Include="Models\SchoolSolutionDB.cs" />
+    <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\StateProvince.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -427,6 +435,16 @@
     <Content Include="Views\Account\_GuardianshipPartial.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Home\Settings.cshtml" />
+    <Content Include="Views\LibraryItem\Index.cshtml" />
+    <Content Include="Views\LibraryItem\Create.cshtml" />
+    <Content Include="Views\LibraryItem\Details.cshtml" />
+    <Content Include="Views\LibraryItem\Delete.cshtml" />
+    <Content Include="Views\LibraryItem\Edit.cshtml" />
+    <Content Include="Views\Course\Details.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\Course\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -507,6 +525,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201309152359177_Initial23.resx">
       <DependentUpon>201309152359177_Initial23.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309160612303_Initial24.resx">
+      <DependentUpon>201309160612303_Initial24.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

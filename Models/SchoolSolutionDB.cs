@@ -22,5 +22,8 @@ namespace SchoolSolution.Models
         public DbSet<LibraryItem> LibraryItems { get; set; }
         public DbSet<Equipment> Equipments { get; set; }
         public DbSet<Area> Areas { get; set; }
+        public DbSet<Settings> Settings { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Degree> Degrees { get; set; }
     }
 }

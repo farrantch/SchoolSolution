@@ -7,7 +7,7 @@ using SchoolSolution.Models;
 
 namespace SchoolSolution.Controllers
 {
-    public class LibraryController : Controller
+    public class LibraryItemController : Controller
     {
         private UsersContext db = new UsersContext();
 
@@ -43,6 +43,7 @@ namespace SchoolSolution.Controllers
         public ActionResult Delete(int id)
         {
             return View();
+
         }
 
         public void CheckoutLibraryItem(LibraryItem libraryItem, UserProfile user)

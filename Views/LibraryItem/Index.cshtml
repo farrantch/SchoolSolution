@@ -1,0 +1,18 @@
+﻿@model PagedList.IPagedList<SchoolSolution.Models.LibraryItem>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Library";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+
+@using (Html.BeginForm("Index", "LibraryItem", FormMethod.Get))
+{
+    <div>
+        Search: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Filter" />
+    </div>
+}

@@ -30,6 +30,7 @@ namespace SchoolSolution.Controllers
             ViewBag.UserNameSortParm = String.IsNullOrEmpty(sortOrder) ? "UserName desc" : "";
             ViewBag.FirstNameSortParm = sortOrder == "FirstName" ? "FirstName desc" : "FirstName";
             ViewBag.LastNameSortParm = sortOrder == "LastName" ? "LastName desc" : "LastName";
+            ViewBag.LastActivitySortParm = sortOrder == "LastActivity" ? "LastActivity desc" : "LastActivity";
 
             var users = from s in db.UserProfiles
                         select s;
@@ -44,6 +45,13 @@ namespace SchoolSolution.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                users = users.Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())
+                                       || s.FirstName.ToUpper().Contains(searchString.ToUpper())
+                                       || s.MiddleName.ToUpper().Contains(searchString.ToUpper()));
+            }
 
             switch (sortOrder)
             {
@@ -62,12 +70,18 @@ namespace SchoolSolution.Controllers
                 case "LastName desc":
                     users = users.OrderByDescending(s => s.LastName);
                     break;
+                case "LastActivity":
+                    users = users.OrderBy(s => s.LastName);
+                    break;
+                case "LastActivity desc":
+                    users = users.OrderByDescending(s => s.LastName);
+                    break;
                 default:
                     users = users.OrderBy(s => s.UserName);
                     break;
             }
 
-            int pageSize = 1;
+            int pageSize = 4;
             int pageNumber = (page ?? 1);
 
             return View(users.ToPagedList(pageNumber, pageSize));

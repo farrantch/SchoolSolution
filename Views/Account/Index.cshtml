@@ -9,9 +9,17 @@
     <h1>@ViewBag.Title</h1>
 </div>
 
+    
+@using (Html.BeginForm("Index", "Account", FormMethod.Get))
+{
+    <div>
+        Search: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { placeholder = "Enter text..." })
+        <input type="submit" value="Filter" />
+    </div>
+}
+
 <table class="table">
     <tr>
-        <th></th>
         <th>
             @Html.ActionLink("User Name", "Index", new { sortOrder = ViewBag.UserNameSortParm, currentFilter=ViewBag.CurrentFilter})
         </th>
@@ -21,14 +29,14 @@
         <th>
             @Html.ActionLink("Last Name", "Index", new {sortOrder = ViewBag.LastNameSortParm, currentFilter=ViewBag.CurrentFilter})
         </th>
+        <th>
+            @Html.ActionLink("Last Activity", "Index", new {sortOrder = ViewBag.LastActivitySortParm, currentFilter=ViewBag.CurrentFilter})
+        </th>
     </tr>
 
 @for (int i = 1; i <= Model.Count(); i++ )
 {
     <tr class="data" style="cursor:pointer" onclick ="location.href = '@(Url.Action("Details", "Account", new { id = Model.ElementAt(i-1).UserName }))'">
-        <td>
-            @i.ToString()
-        </td>
         <td>
             @Html.DisplayFor(model => Model.ElementAt(i-1).UserName)
         </td>
@@ -37,6 +45,9 @@
         </td>
         <td>
             @Html.DisplayFor(model => Model.ElementAt(i-1).LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.ElementAt(i-1).LastActivityOn)
         </td>
     </tr>
 }

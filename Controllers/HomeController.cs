@@ -31,6 +31,11 @@ namespace SchoolSolution.Controllers
             return View();
         }
 
+        public ActionResult Settings()
+        {
+            return View();
+        }
+
         public ActionResult GetStates(string id = "")
         {
             var stateList = StateProvince.GetStates()

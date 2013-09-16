@@ -575,12 +575,19 @@ table {
     margin-top: 0.75em;
     border: 0 none;
 }
+        table tr:nth-child(odd) {
+            background: #EEEEEE;
+        }
 
+        table tr:nth-child(even) {
+            background: #E4E4E4;
+        }
 th {
     font-size: 1.2em;
     text-align: left;
     border: none 0px;
-    padding-left: 0;
+    padding: 1em 4em 1em 4em;
+    /*padding-left: 0;*/
 }
 
     th a {
@@ -628,10 +635,15 @@ tr.pager td {
     padding: 0 0.25em 0 0;
 }
 
-tr.hover
+tr.data
 {
 
 }
+
+    tr.data:hover td
+    {
+        background-color: #FFFAF0;
+    }
 
 
 /********************

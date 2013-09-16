@@ -253,6 +253,9 @@ namespace SchoolSolution.Migrations
                 Publisher = "Scribner"
             });
 
+            //CONFIGURE SETTINGS
+
+
             context.SaveChanges();
         }
     }

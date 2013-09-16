@@ -23,6 +23,13 @@ namespace SchoolSolution.Models
         public int Barcode { get; set; }
         public string Description { get; set; }
         public virtual ICollection<CheckoutLibraryTicket> LibraryCheckoutHistory { get; set; }
+
+        public bool Available {
+            get
+            {
+                return true;
+                //return LibraryCheckoutHistory
+            }
     }
 
     public abstract class LibraryItemWithTitle : LibraryItem

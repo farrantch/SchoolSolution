@@ -1,0 +1,183 @@
+﻿@model SchoolSolution.Models.UserProfile
+@{
+    ViewBag.Title = "Edit";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+
+<p class="message-success">@ViewBag.StatusMessage</p>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+        
+    <fieldset>
+        <legend>Account</legend>
+
+        <div class="editor-label">
+            @Html.DisplayNameFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserName)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.MiddleName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MiddleName)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastName)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.Gender)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Gender, (SelectList)ViewBag.GenderList)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.BirthDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BirthDate)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.ApartmentNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ApartmentNumber)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.ZipCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ZipCode)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.Country)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Country, (SelectList)ViewBag.CountryList)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayNameFor(model => model.StateProvince)
+        </div>
+        <div class="editor-field">
+            @*@Html.DropDownListFor(model => model.StateProvince, (SelectList)ViewBag.StateProvinceList)*@
+            @Html.EditorFor(model => model.StateProvince)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Balance)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Balance)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.SSN)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SSN)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.Grade)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Grade)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.Disabled)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Disabled)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.Verified)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Verified)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.DisableLibraryCheckout)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DisableLibraryCheckout)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.DisableAreaCheckout)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DisableAreaCheckout)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.DisableEquipmentCheckout)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DisableEquipmentCheckout)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.Graduate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Graduate)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.SubsidizedLunch)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SubsidizedLunch)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.BusRider)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BusRider)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.LastActivityOn)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.LastActivityOn)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.AccountCreatedOn)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.AccountCreatedOn)
+        </div>
+        <div class="editor-label">
+             @Html.DisplayNameFor(model => model.PasswordChangedOn)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.PasswordChangedOn)
+        </div>
+
+    </fieldset>
+    
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,181 @@
+﻿@model SchoolSolution.Models.UserProfile
+@{
+    ViewBag.Title = "Details";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+
+<p class="message-success">@ViewBag.StatusMessage</p>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+        
+    <fieldset>
+        <legend>Account</legend>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.UserName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.UserName)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.FirstName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.FirstName)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.MiddleName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.MiddleName)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.LastName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.LastName)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Email)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Email)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Gender)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Gender)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.BirthDate)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.BirthDate)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Address)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Address)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.ApartmentNumber)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.ApartmentNumber)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.ZipCode)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.ZipCode)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Country)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Country)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.StateProvince)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.StateProvince)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Balance)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Balance)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Grade)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Grade)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Disabled)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Disabled)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Verified)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Verified)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DisableLibraryCheckout)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DisableLibraryCheckout)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DisableAreaCheckout)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DisableAreaCheckout)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.DisableEquipmentCheckout)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DisableEquipmentCheckout)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Graduate)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Graduate)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.SubsidizedLunch)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.SubsidizedLunch)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.BusRider)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.BusRider)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.SSN)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.SSN)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.LastActivityOn)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.LastActivityOn)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.AccountCreatedOn)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.AccountCreatedOn)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.PasswordChangedOn)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.PasswordChangedOn)
+        </div>
+
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

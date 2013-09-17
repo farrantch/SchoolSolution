@@ -13,5 +13,12 @@ namespace SchoolSolution.Models
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int AreaId { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public virtual IEnumerable<CheckoutAreaTicket> History { get; set; }
     }
 }

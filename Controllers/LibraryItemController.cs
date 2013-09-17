@@ -24,16 +24,16 @@ namespace SchoolSolution.Controllers
             return View();
         }
 
-        public ActionResult Details(int id)
-        {
-            LibraryItem li = db.LibraryItems.Single(u => u.LibraryItemID == id);
+        //public ActionResult Details(int id)
+        //{
+        //    LibraryItem li = db.LibraryItems.Single(u => u.LibraryItemID == id);
 
-            if (User == null)
-                return HttpNotFound();
+        //    if (User == null)
+        //        return HttpNotFound();
 
-            ViewBag.Class = li.GetType();
-            return View(li);
-        }
+        //    ViewBag.Class = li.GetType();
+        //    return View(li);
+        //}
 
         public ActionResult Edit(int id)
         {

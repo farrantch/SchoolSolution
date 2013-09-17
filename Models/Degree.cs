@@ -14,4 +14,3 @@ namespace SchoolSolution.Models
         public int DegreeId { get; set; }
     }
 }
-}

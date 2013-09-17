@@ -81,11 +81,11 @@ namespace SchoolSolution.Models
         //public ICollection<Immunization> Immunizations { get; set; }
         //public ICollection<PhoneNumber> PhoneNumbers { get; set; }
         //public virtual ICollection<Transaction> Transactions { get; set; }
-        public virtual ICollection<CheckoutLibraryTicket> LibraryItems { get; set; }
+        public virtual ICollection<CheckoutLibraryItemTicket> LibraryItems { get; set; }
         public virtual ICollection<CheckoutEquipmentTicket> EquipmentItems { get; set; }
+        public virtual ICollection<CheckoutAreaTicket> AreasReserved { get; set; }
         public virtual ICollection<Guardian> Guardians { get; set; }
         public virtual ICollection<UserProfile> Guardianship { get; set; }
-        public virtual ICollection<Area> AreasReserved { get; set; }
 
         //List of awards
         //List of curriculum

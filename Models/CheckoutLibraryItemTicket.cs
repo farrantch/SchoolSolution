@@ -7,15 +7,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolSolution.Models
 {
-    [Table("CheckoutEquipmentTicket")]
-    public class CheckoutEquipmentTicket
+    [Table("CheckoutLibraryItemTicket")]
+    public class CheckoutLibraryItemTicket
     {
         [Key]
-        public int CheckoutEquipmentTicketId { get; set; }
+        public int CheckoutLibraryItemTicketId { get; set; }
         public DateTime CheckedOut { get; set; }
         public DateTime CheckedIn { get; set; }
         public DateTime Due { get; set; }
         public virtual UserProfile User { get; set; }
-        public virtual Equipment Equipment { get; set; }
+        public virtual LibraryItem LibraryItem { get; set; }
     }
 }

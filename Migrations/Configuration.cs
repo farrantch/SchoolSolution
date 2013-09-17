@@ -243,13 +243,13 @@ namespace SchoolSolution.Migrations
             //ADD LIBRARY ITEMS
             context.LibraryItems.Add(new Book
             {
-                DatePublished =  DateTime.Now,
+                DatePublished = DateTime.Now,
                 Barcode = 934940,
                 Description = "This is a description of a demo book.",
                 Title = "How to Kill a Mockingbird",
                 ISBN = "0-85131-041-9",
                 DateAdded = DateTime.Now,
-                Authors = new string[] { "R.J. Welling", "Author Test2"},
+                Authors = new string[] { "R.J. Welling", "Author Test2" },
                 Publisher = "Scribner"
             });
 

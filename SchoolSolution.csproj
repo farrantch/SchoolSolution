@@ -295,9 +295,18 @@
     <Compile Include="Migrations\201309160612303_Initial24.Designer.cs">
       <DependentUpon>201309160612303_Initial24.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201309170013270_Initial25.cs" />
+    <Compile Include="Migrations\201309170013270_Initial25.Designer.cs">
+      <DependentUpon>201309170013270_Initial25.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201309170036347_Initial26.cs" />
+    <Compile Include="Migrations\201309170036347_Initial26.Designer.cs">
+      <DependentUpon>201309170036347_Initial26.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Area.cs" />
+    <Compile Include="Models\CheckoutAreaTicket.cs" />
     <Compile Include="Models\CheckoutEquipmentTicket.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Course.cs" />
@@ -306,12 +315,13 @@
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\Guardian.cs" />
     <Compile Include="Models\Immunization.cs" />
-    <Compile Include="Models\CheckoutLibraryTicket.cs" />
+    <Compile Include="Models\CheckoutLibraryItemTicket.cs" />
     <Compile Include="Models\LibraryModels.cs" />
     <Compile Include="Models\PhoneNumber.cs" />
     <Compile Include="Models\SchoolSolutionDB.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\StateProvince.cs" />
+    <Compile Include="Models\Term.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validations\ISBNValidationAttribute.cs" />
@@ -528,6 +538,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201309160612303_Initial24.resx">
       <DependentUpon>201309160612303_Initial24.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309170013270_Initial25.resx">
+      <DependentUpon>201309170013270_Initial25.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201309170036347_Initial26.resx">
+      <DependentUpon>201309170036347_Initial26.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

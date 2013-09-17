@@ -16,20 +16,22 @@ namespace SchoolSolution.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int LibraryItemID { get; set; }
 
-        [Display(Name="Date Published")]
-        [DisplayFormat(DataFormatString="{0:MM/dd/yyyy}")]
+        [Display(Name = "Date Published")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime DatePublished { get; set; }
 
         public int Barcode { get; set; }
         public string Description { get; set; }
-        public virtual ICollection<CheckoutLibraryTicket> LibraryCheckoutHistory { get; set; }
+        public virtual ICollection<CheckoutLibraryItemTicket> History { get; set; }
 
-        public bool Available {
+        public bool Available
+        {
             get
             {
                 return true;
                 //return LibraryCheckoutHistory
             }
+        }
     }
 
     public abstract class LibraryItemWithTitle : LibraryItem

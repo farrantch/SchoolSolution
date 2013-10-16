@@ -33,6 +33,8 @@ namespace SchoolSolution.Models
 
         public string Gender { get; set; }
 
+        public IEnumerable<Ethnicity> Ethnicity { get; set; }
+
         [Display(Name = "Birth Date")]
         [DisplayFormat(DataFormatString="{0:MM/dd/yyyy}")]
         public DateTime BirthDate { get; set; }
@@ -53,30 +55,30 @@ namespace SchoolSolution.Models
 
         //EVERYTHING ABOVE THIS LINE ON REGISTRATION FORM
 
-        [Display(Name = "Last Activity On")]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy HH:mm:ss tt}")]
-        public DateTime LastActivityOn { get; set; }
-
-        [Display(Name = "Account Created On")]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy HH:mm:ss tt}")]
-        public DateTime AccountCreatedOn { get; set; }
-
-        [Display(Name = "Password Changed On")]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy HH:mm:ss tt}")]
-        public DateTime PasswordChangedOn { get; set; }
-
         public decimal Balance { get; set; }
-
-        public bool Disabled { get; set; }
-        public bool Verified { get; set; }
-        public bool DisableLibraryCheckout { get; set; }
-        public bool DisableAreaCheckout { get; set; }
-        public bool DisableEquipmentCheckout { get; set; }
-        public bool Graduate { get; set; }
-        public bool SubsidizedLunch { get; set; }
-        public bool BusRider { get; set; }
         public string SSN { get; set; }
         public string Grade { get; set; }
+        public bool Verified { get; set; }
+
+        [Display(Name = "Disable Library Checkout")]
+        public bool DisableLibraryCheckout { get; set; }
+
+        [Display(Name = "Disable Area Checkout")]
+        public bool DisableAreaCheckout { get; set; }
+
+        [Display(Name = "Disable Equipment Checkout")]
+        public bool DisableEquipmentCheckout { get; set; }
+        public bool Graduate { get; set; }
+
+        [Display(Name = "Subsidized Lunch")]
+        public bool SubsidizedLunch { get; set; }
+
+        [Display(Name = "Bus Rider")]
+        public bool BusRider { get; set; }
+
+        [Display(Name = "Exchange Student")]
+        public bool ExchangeStudent { get; set; }
+
 
         //public ICollection<Immunization> Immunizations { get; set; }
         //public ICollection<PhoneNumber> PhoneNumbers { get; set; }
@@ -92,10 +94,14 @@ namespace SchoolSolution.Models
 
         public byte[] Photo { get; set; }
 
-        public int Age
-        {
-            get
-            {
+        public string GetFirstLastName{
+            get{
+                return FirstName + " " + LastName;
+            }
+        }
+
+        public int Age{
+            get{
                 DateTime today = DateTime.Today;
                 int age = today.Year - BirthDate.Year;
                 if (BirthDate > today.AddYears(-age)) age--;
@@ -103,12 +109,91 @@ namespace SchoolSolution.Models
             }
         }
 
-        public double GPA
+        public double GPA{
+            get{
+                //Calculate GPA
+                return 0;
+            }
+        }
+
+        [Display(Name = "Creation Date")]
+        public DateTime CreationDate
         {
             get
             {
-                //Calculate GPA
-                return 0;
+                return Membership.GetUser(UserName, false).CreationDate;
+            }
+        }
+
+        [Display(Name = "Approved")]
+        public bool IsApproved
+        {
+            get
+            {
+                return Membership.GetUser(UserName, false).IsApproved;
+            }
+        }
+
+        [Display(Name = "Locked Out")]
+        public bool IsLockedOut
+        {
+            get
+            {
+                return Membership.GetUser(UserName, false).IsLockedOut;
+            }
+        }
+
+        [Display(Name = "Online")]
+        public bool IsOnline
+        {
+            get
+            {
+                return Membership.GetUser(UserName, false).IsOnline;
+            }
+        }
+
+        [Display(Name = "Last Activity Date")]
+        public DateTime LastActivityDate
+        {
+            get
+            {
+                return Membership.GetUser(UserName, false).LastActivityDate;
+            }
+        }
+
+        [Display(Name = "Last Lockout Date")]
+        public DateTime LastLockoutDate
+        {
+            get
+            {
+                return Membership.GetUser(UserName, false).LastLockoutDate;
+            }
+        }
+
+        [Display(Name = "Last Login Date")]
+        public DateTime LastLoginDate
+        {
+            get
+            {
+                return Membership.GetUser(UserName, false).LastLoginDate;
+            }
+        }
+
+        [Display(Name = "Last Password Changed Date")]
+        public DateTime LastPasswordChangedDate
+        {
+            get
+            {
+                return Membership.GetUser(UserName, false).LastPasswordChangedDate;
+            }
+        }
+
+        [Display(Name = "Password Question")]
+        public string PasswordQuestion
+        {
+            get
+            {
+                return Membership.GetUser(UserName, false).PasswordQuestion;
             }
         }
     }

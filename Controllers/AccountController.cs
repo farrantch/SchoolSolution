@@ -30,7 +30,7 @@ namespace SchoolSolution.Controllers
             ViewBag.UserNameSortParm = String.IsNullOrEmpty(sortOrder) ? "UserName desc" : "";
             ViewBag.FirstNameSortParm = sortOrder == "FirstName" ? "FirstName desc" : "FirstName";
             ViewBag.LastNameSortParm = sortOrder == "LastName" ? "LastName desc" : "LastName";
-            ViewBag.LastActivitySortParm = sortOrder == "LastActivity" ? "LastActivity desc" : "LastActivity";
+            //ViewBag.LastActivitySortParm = sortOrder == "LastActivity" ? "LastActivity desc" : "LastActivity";
 
             var users = from s in db.UserProfiles
                         select s;
@@ -50,7 +50,8 @@ namespace SchoolSolution.Controllers
             {
                 users = users.Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())
                                        || s.FirstName.ToUpper().Contains(searchString.ToUpper())
-                                       || s.MiddleName.ToUpper().Contains(searchString.ToUpper()));
+                                       || s.MiddleName.ToUpper().Contains(searchString.ToUpper())
+                                       || s.UserName.ToUpper().Contains(searchString.ToUpper()));
             }
 
             switch (sortOrder)
@@ -70,12 +71,12 @@ namespace SchoolSolution.Controllers
                 case "LastName desc":
                     users = users.OrderByDescending(s => s.LastName);
                     break;
-                case "LastActivity":
-                    users = users.OrderBy(s => s.LastName);
-                    break;
-                case "LastActivity desc":
-                    users = users.OrderByDescending(s => s.LastName);
-                    break;
+                //case "LastActivity":
+                //    users = users.OrderBy(s => s.LastName);
+                //    break;
+                //case "LastActivity desc":
+                //    users = users.OrderByDescending(s => s.LastName);
+                //    break;
                 default:
                     users = users.OrderBy(s => s.UserName);
                     break;
@@ -172,7 +173,7 @@ namespace SchoolSolution.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ViewBag.StateList = new SelectList(StateProvince.GetStates(), "StateId", "StateId");
+            ViewBag.EthnicityList = new SelectList(Ethnicity.GetEthnicities(), "EthnicityId", "EthnicityId");
             ViewBag.CountryList = new SelectList(Country.GetCountryList(), "CountryId", "Name");
             ViewBag.GenderList = new SelectList(Gender.GetGenderList(), "GenderId", "GenderId");
             return View();
@@ -405,20 +406,6 @@ namespace SchoolSolution.Controllers
             }
         }
         #endregion
-
-        public virtual ActionResult UpdateLastActivityDate(string userName)
-        {
-            UserProfile user = db.UserProfiles.Single(u => u.UserName == userName);
-
-            user.LastActivityOn = DateTime.Now;
-
-            db.Entry(user).State = EntityState.Modified;
-
-            db.SaveChanges();
-
-            return new EmptyResult();
-        }
-
         public ActionResult GetStates(string id = "")
         {
             var stateList = StateProvince.GetStates()

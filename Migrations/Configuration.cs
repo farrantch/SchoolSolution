@@ -112,11 +112,7 @@ namespace SchoolSolution.Migrations
                 ZipCode = "66502",
                 Country = "US",
                 StateProvince = "Kansas",
-                LastActivityOn = DateTime.Now,
-                AccountCreatedOn = DateTime.Now,
-                PasswordChangedOn = DateTime.Now,
                 Balance = 23.00,
-                Disabled = false,
                 Verified = true,
                 DisableLibraryCheckout = false,
                 DisableAreaCheckout = false,
@@ -124,6 +120,7 @@ namespace SchoolSolution.Migrations
                 Graduate = false,
                 SubsidizedLunch = false,
                 BusRider = false,
+                ExchangeStudent = false,
                 SSN = "234-38-2323",
                 Grade = "11"
             }, false);
@@ -142,11 +139,7 @@ namespace SchoolSolution.Migrations
                     ZipCode = "63532",
                     Country = "US",
                     StateProvince = "Kansas",
-                    LastActivityOn = DateTime.Now,
-                    AccountCreatedOn = DateTime.Now,
-                    PasswordChangedOn = DateTime.Now,
                     Balance = 171.00,
-                    Disabled = false,
                     Verified = true,
                     DisableLibraryCheckout = false,
                     DisableAreaCheckout = false,
@@ -154,6 +147,7 @@ namespace SchoolSolution.Migrations
                     Graduate = false,
                     SubsidizedLunch = false,
                     BusRider = false,
+                    ExchangeStudent = false,
                     SSN = "524-52-7244",
                     Grade = "5"
                 }, false);
@@ -171,11 +165,7 @@ namespace SchoolSolution.Migrations
                     ZipCode = "64562",
                     Country = "US",
                     StateProvince = "Missouri",
-                    LastActivityOn = DateTime.Now,
-                    AccountCreatedOn = DateTime.Now,
-                    PasswordChangedOn = DateTime.Now,
                     Balance = 1.00,
-                    Disabled = false,
                     Verified = true,
                     DisableLibraryCheckout = true,
                     DisableAreaCheckout = true,
@@ -183,6 +173,7 @@ namespace SchoolSolution.Migrations
                     Graduate = false,
                     SubsidizedLunch = true,
                     BusRider = true,
+                    ExchangeStudent = false,
                     SSN = "133-52-5673",
                     Grade = "3"
                 }, false);
@@ -200,11 +191,7 @@ namespace SchoolSolution.Migrations
                     ZipCode = "64562",
                     Country = "United Kingdom",
                     StateProvince = "Britian",
-                    LastActivityOn = DateTime.Now,
-                    AccountCreatedOn = DateTime.Now,
-                    PasswordChangedOn = DateTime.Now,
                     Balance = 1.00,
-                    Disabled = false,
                     Verified = true,
                     DisableLibraryCheckout = true,
                     DisableAreaCheckout = true,
@@ -212,6 +199,7 @@ namespace SchoolSolution.Migrations
                     Graduate = false,
                     SubsidizedLunch = true,
                     BusRider = true,
+                    ExchangeStudent = true,
                     SSN = "232-12-2343",
                     Grade = "5"
                 }, false);
@@ -253,8 +241,16 @@ namespace SchoolSolution.Migrations
                 Publisher = "Scribner"
             });
 
-            //CONFIGURE SETTINGS
+            //REMOVE SETTINGS
+            foreach (Settings s in context.Settings)
+                context.Settings.Remove(s);
 
+            //CONFIGURE SETTINGS
+            context.Settings.Add(new Settings
+            {
+                NumberDaysUntilCheckoutItemsDeleted = 365,
+                NumberOfTableResults = 4
+            });
 
             context.SaveChanges();
         }

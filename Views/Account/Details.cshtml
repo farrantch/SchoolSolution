@@ -20,7 +20,7 @@
             @Html.DisplayNameFor(model => model.UserName)
         </div>
         <div class="display-field">
-            @Html.DisplayFor(model => model.UserName)
+            @Html.DisplayFor(model => model.UserName) 
         </div>
         <div class="display-label">
              @Html.DisplayNameFor(model => model.FirstName)
@@ -57,6 +57,12 @@
         </div>
         <div class="display-field">
             @Html.DisplayFor(model => model.BirthDate)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Age)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Age)
         </div>
         <div class="display-label">
              @Html.DisplayNameFor(model => model.Address)
@@ -101,12 +107,6 @@
             @Html.DisplayFor(model => model.Grade)
         </div>
         <div class="display-label">
-             @Html.DisplayNameFor(model => model.Disabled)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Disabled)
-        </div>
-        <div class="display-label">
              @Html.DisplayNameFor(model => model.Verified)
         </div>
         <div class="display-field">
@@ -149,29 +149,72 @@
             @Html.DisplayFor(model => model.BusRider)
         </div>
         <div class="display-label">
+             @Html.DisplayNameFor(model => model.ExchangeStudent)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.ExchangeStudent)
+        </div>
+        <div class="display-label">
              @Html.DisplayNameFor(model => model.SSN)
         </div>
         <div class="display-field">
             @Html.DisplayFor(model => model.SSN)
         </div>
         <div class="display-label">
-             @Html.DisplayNameFor(model => model.LastActivityOn)
+             @Html.DisplayNameFor(model => model.CreationDate)
         </div>
         <div class="display-field">
-            @Html.DisplayFor(model => model.LastActivityOn)
+            @Html.DisplayFor(model => model.CreationDate)
         </div>
         <div class="display-label">
-             @Html.DisplayNameFor(model => model.AccountCreatedOn)
+             @Html.DisplayNameFor(model => model.IsApproved)
         </div>
         <div class="display-field">
-            @Html.DisplayFor(model => model.AccountCreatedOn)
+            @Html.DisplayFor(model => model.IsApproved)
         </div>
         <div class="display-label">
-             @Html.DisplayNameFor(model => model.PasswordChangedOn)
+             @Html.DisplayNameFor(model => model.IsLockedOut)
         </div>
         <div class="display-field">
-            @Html.DisplayFor(model => model.PasswordChangedOn)
+            @Html.DisplayFor(model => model.IsLockedOut)
         </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.IsOnline)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.IsOnline)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.LastActivityDate)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.LastActivityDate)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.LastLockoutDate)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.LastLockoutDate)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.LastLoginDate)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.LastLoginDate)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.LastPasswordChangedDate)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.LastPasswordChangedDate)
+        </div>
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.PasswordQuestion)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.PasswordQuestion)
+        </div>
+
 
     </fieldset>
 }

@@ -113,8 +113,9 @@ namespace SchoolSolution.ViewModels
         public string ZipCode { get; set; }
 
         [Display(Name = "Country")]
-        [Required(ErrorMessage="Please select a country.")]
+        [Required(ErrorMessage = "Please select a country.")]
         public string Country { get; set; }
+        //public IEnumerable<SelectListItem> Country { get; set; }
 
         [Display(Name = "State/Province")]
         //[Required(ErrorMessage="Please select a state/province.")]

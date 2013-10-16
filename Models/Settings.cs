@@ -13,6 +13,9 @@ namespace SchoolSolution.Models
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int SettingsId { get; set; }
+
         public int NumberOfTableResults { get; set; }
+
+        public int NumberDaysUntilCheckoutItemsDeleted { get; set; }
     }
 }

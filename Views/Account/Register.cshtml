@@ -57,9 +57,12 @@
             </li>*@
             <li>
                 @Html.LabelFor(model => model.Country)
-                @Html.DropDownListFor(model => model.Country, (SelectList)ViewBag.CountryList, "Select...", new { onchange = "FetchStates();" })
-@*                @Html.DropDownListFor(model => model.StateProvince, (Select*@
-@*                <span data-bind="visible: states().length > 0">@Html.LabelFor(model => model.StateProvince) <select data-bind="options: states, optionsText: 'StateName', optionsValue: 'StateId', optionsCaption: 'Choose...'"></select></span>*@
+@*                @Html.DropDownListFor(model => model.Country, (SelectList)ViewBag.CountryList, "Select...", new { onchange = "FetchStates();" })*@
+@*               <span data-bind="visible: StateProvince().length > 0">@Html.LabelFor(model => model.StateProvince) <select data-bind="options: StateProvince, optionsText: 'StateId', optionsValue: 'StateId', optionsCaption: 'Choose...'"></select></span>*@
+                Select Country: @Html.DropDownList("ddlCountry", ViewBag.CountryList as SelectList, "Select...", new { onchange = "FetchStates();" })
+                <span data-bind="visible:states().length > 0">
+                    Select State: <select id="ddlStates" data-bind="options: states, optionsText: 'StateName', optionsValue: 'StateId', optionsCaption: 'Choose...'"></select>
+                </span>
             </li>
             <li>
                 @Html.LabelFor(m => m.Address)
@@ -80,28 +83,23 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/Scripts/CascadingDDL.js")
+@*    @Scripts.Render("~/Scripts/CascadingDDL.js")*@
 }
 
 <script type="text/javascript">
-    function LoadStatesProvince() {
-        var selectedCountry= $("#Country").val();
 
-        $.ajax({
-            url: "@Url.Action("GetState")",
-            type: 'GET',
-            data: { id: selectedCountryId},
-        }).done(function (result) {
-            var cities = $('#StateProvince');
-            cities.empty();
-            $.each(result, function (index, item) {
-                cities.append(
-                    $('<option />', {
-                        value: item.id,
-                        text: item.name
-                    })
-                );
-            });
+    function CascadingDDLViewModel() {
+        this.states = ko.observableArray([]);
+    }
+
+    var objVM = new CascadingDDLViewModel();
+    ko.applyBindings(objVM);
+
+    function FetchStates() {
+        var countryCode = $("#ddlCountry").val();
+        $.getJSON("/Home/GetStates/" + countryCode, null, function (data) {
+            objVM.states(data);
         });
-    };
+    }
+
 </script>

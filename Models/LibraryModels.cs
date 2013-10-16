@@ -11,7 +11,7 @@ namespace SchoolSolution.Models
 {
     [Table("LibraryItem")]
     public abstract class LibraryItem
-    {
+   { 
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int LibraryItemID { get; set; }

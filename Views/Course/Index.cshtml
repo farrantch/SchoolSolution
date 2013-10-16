@@ -1,0 +1,44 @@
+﻿@model PagedList.IPagedList<SchoolSolution.Models.Course>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Courses";
+}
+
+<h2>Course Catalog</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Department", "Index", new { sortOrder = ViewBag.DepartmentSortParm, currentFilter=ViewBag.CurrentFilter})
+        </th>
+        <th>
+            @Html.ActionLink("Number", "Index", new {sortOrder = ViewBag.NumberSortParm, currentFilter=ViewBag.CurrentFilter})
+        </th>
+        <th>
+            @Html.ActionLink("Name", "Index", new {sortOrder = ViewBag.NameSortParm, currentFilter=ViewBag.CurrentFilter})
+        </th>
+        <th>
+            @Html.ActionLink("Instructor Name", "Index", new {sortOrder = ViewBag.InstructorNameSortParm, currentFilter=ViewBag.CurrentFilter})
+        </th>
+    </tr>
+
+@for (int i = 1; i <= Model.Count(); i++ )
+{
+    <tr class="data" style="cursor:pointer" onclick ="location.href = '@(Url.Action("Details", "Account", new { id = Model.ElementAt(i-1).Number }))'">
+        <td>
+            @Html.DisplayFor(model => Model.ElementAt(i-1).Department)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.ElementAt(i-1).Number)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.ElementAt(i-1).Name)
+        </td>
+        <td>
+            @Html.DisplayFor(model => Model.ElementAt(i-1).Instructor.GetFirstLastName)
+        </td>
+    </tr>
+}
+    
+</table>

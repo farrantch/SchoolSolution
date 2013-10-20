@@ -189,6 +189,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LibraryItemController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -323,6 +324,22 @@
     <Compile Include="Migrations\201310160535020_Initial30.Designer.cs">
       <DependentUpon>201310160535020_Initial30.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201310200528050_Initial31.cs" />
+    <Compile Include="Migrations\201310200528050_Initial31.Designer.cs">
+      <DependentUpon>201310200528050_Initial31.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310200559307_Initial32.cs" />
+    <Compile Include="Migrations\201310200559307_Initial32.Designer.cs">
+      <DependentUpon>201310200559307_Initial32.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310200709021_Initial33.cs" />
+    <Compile Include="Migrations\201310200709021_Initial33.Designer.cs">
+      <DependentUpon>201310200709021_Initial33.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310200739331_Initial34.cs" />
+    <Compile Include="Migrations\201310200739331_Initial34.Designer.cs">
+      <DependentUpon>201310200739331_Initial34.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Area.cs" />
@@ -330,7 +347,9 @@
     <Compile Include="Models\CheckoutEquipmentTicket.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\CourseTicket.cs" />
     <Compile Include="Models\Degree.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\Ethnicity.cs" />
     <Compile Include="Models\Gender.cs" />
@@ -477,6 +496,7 @@
     <Content Include="Views\Course\Edit.cshtml" />
     <Content Include="Views\Course\Delete.cshtml" />
     <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Department\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -581,6 +601,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201310160535020_Initial30.resx">
       <DependentUpon>201310160535020_Initial30.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310200528050_Initial31.resx">
+      <DependentUpon>201310200528050_Initial31.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310200559307_Initial32.resx">
+      <DependentUpon>201310200559307_Initial32.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310200709021_Initial33.resx">
+      <DependentUpon>201310200709021_Initial33.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310200739331_Initial34.resx">
+      <DependentUpon>201310200739331_Initial34.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

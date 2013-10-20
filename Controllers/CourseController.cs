@@ -3,17 +3,80 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SchoolSolution.Models;
+using PagedList;
+
 
 namespace SchoolSolution.Controllers
 {
     public class CourseController : Controller
     {
+        private UsersContext db = new UsersContext();
+
         //
         // GET: /Course/
 
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View();
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.DepartmentSortParm = String.IsNullOrEmpty(sortOrder) ? "Department desc" : "";
+            ViewBag.NumberSortParm = sortOrder == "Number" ? "Number desc" : "Number";
+            ViewBag.NameSortParm = sortOrder == "Name" ? "Name desc" : "Name";
+
+            var courses = from s in db.Courses
+                          select s;
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                int num = -1;
+                int outputNum;
+                bool isSearchStringNumber = Int32.TryParse(searchString, out outputNum);
+                if (isSearchStringNumber)
+                    num = outputNum;
+
+                courses = courses.Where(s => s.Department.ToUpper().Contains(searchString.ToUpper())
+                                       || s.Number.Equals(num)
+                                       || s.Name.ToUpper().Contains(searchString.ToUpper()));
+            }
+
+            switch (sortOrder)
+            {
+                case "Department desc":
+                    courses = courses.OrderByDescending(s => s.Department);
+                    break;
+                case "Number":
+                    courses = courses.OrderBy(s => s.Number);
+                    break;
+                case "Number desc":
+                    courses = courses.OrderByDescending(s => s.Number);
+                    break;
+                case "Name":
+                    courses = courses.OrderBy(s => s.Name);
+                    break;
+                case "Name desc":
+                    courses = courses.OrderByDescending(s => s.Name);
+                    break;
+                default:
+                    courses = courses.OrderBy(s => s.Department);
+                    break;
+            }
+
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+
+            return View(courses.ToPagedList(pageNumber, pageSize));
         }
 
         //
@@ -21,7 +84,14 @@ namespace SchoolSolution.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            var Course = db.Courses.Single(u => u.CourseId == id);
+
+            if (Course == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(Course);
         }
 
         //

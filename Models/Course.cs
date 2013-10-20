@@ -20,30 +20,10 @@ namespace SchoolSolution.Models
 
         public string Department { get; set; }
 
-        public virtual UserProfile Instructor { get; set; }
+        public string Description { get; set; }
 
-        public virtual IEnumerable<UserProfile> Assistants { get; set; }
+        public virtual IEnumerable<Course> Prequisites { get; set; }
 
-        public virtual IEnumerable<UserProfile> Students { get; set; }
-
-        public virtual IEnumerable<Course> Prerequisites { get; set; }
-
-        [Display(Name = "Starting Time")]
-        public DateTime TimeStart { get; set; }
-
-        [Display(Name = "Length of Class")]
-        public TimeSpan TimeLength { get; set; }
-
-        [Display(Name = "Starting Date")]
-        public DateTime DateStart { get; set; }
-
-        [Display(Name = "Ending Date")]
-        public DateTime DateEnd { get; set; }
-
-        [Display(Name = "Final Exam Date and Time")]
-        public DateTime FinalExamDateTime { get; set; }
-
-        [Display(Name = "Final Exam Length")]
-        public TimeSpan FinalExamLength { get; set; }
+        public virtual IEnumerable<CourseTicket> CourseHistory { get; set; }
     }
 }

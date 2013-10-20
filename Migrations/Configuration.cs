@@ -24,6 +24,7 @@ namespace SchoolSolution.Migrations
                 WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
             }
 
+            #region Deletions
             //DELETE ALL USERS
             foreach (var entity in context.UserProfiles)
             {
@@ -42,6 +43,26 @@ namespace SchoolSolution.Migrations
 
             context.SaveChanges();
 
+            //DELETE ALL COURSES
+            foreach (var entity in context.Courses)
+                context.Courses.Remove(entity);
+
+            //DELETE ALL DEPARTMENTS
+            foreach (var entity in context.Departments)
+                context.Departments.Remove(entity);
+
+            //DELETE ALL LIBRARYITEMS
+            foreach (var entity in context.LibraryItems)
+                context.LibraryItems.Remove(entity);
+
+            //REMOVE SETTINGS
+            foreach (Settings s in context.Settings)
+                context.Settings.Remove(s);
+
+            context.SaveChanges();
+            #endregion
+
+            #region Create Roles
             //CREATE ROLES
             if (!Roles.RoleExists("Administrator"))
                 Roles.CreateRole("Administrator");
@@ -91,39 +112,41 @@ namespace SchoolSolution.Migrations
                 Roles.CreateRole("User");
             if (!Roles.RoleExists("Volunteer"))
                 Roles.CreateRole("Volunteer");
-           
 
+            context.SaveChanges();
+            #endregion
+
+            #region Create Users
             //CREATE EXAMPLE USERS
-
             if (!WebSecurity.UserExists("admin"))
                 WebSecurity.CreateUserAndAccount("admin", "admin", false);
 
             if (!WebSecurity.UserExists("farrantc"))
                 WebSecurity.CreateUserAndAccount("farrantc", "farrantc", new
-            {
-                FirstName = "Chase",
-                MiddleName = "Michael",
-                LastName = "Farrant",
-                Email = "farrantc@ksu.edu",
-                Gender = "Male",
-                BirthDate = new DateTime(1990, 11, 4),
-                Address = "1800 Platt St.",
-                ApartmentNumber = 12,
-                ZipCode = "66502",
-                Country = "US",
-                StateProvince = "Kansas",
-                Balance = 23.00,
-                Verified = true,
-                DisableLibraryCheckout = false,
-                DisableAreaCheckout = false,
-                DisableEquipmentCheckout = false,
-                Graduate = false,
-                SubsidizedLunch = false,
-                BusRider = false,
-                ExchangeStudent = false,
-                SSN = "234-38-2323",
-                Grade = "11"
-            }, false);
+                {
+                    FirstName = "Chase",
+                    MiddleName = "Michael",
+                    LastName = "Farrant",
+                    Email = "farrantc@ksu.edu",
+                    Gender = "Male",
+                    BirthDate = new DateTime(1990, 11, 4),
+                    Address = "1800 Platt St.",
+                    ApartmentNumber = 12,
+                    ZipCode = "66502",
+                    Country = "US",
+                    StateProvince = "Kansas",
+                    Balance = 23.00,
+                    Verified = true,
+                    DisableLibraryCheckout = false,
+                    DisableAreaCheckout = false,
+                    DisableEquipmentCheckout = false,
+                    Graduate = false,
+                    SubsidizedLunch = false,
+                    BusRider = false,
+                    ExchangeStudent = false,
+                    SSN = "234-38-2323",
+                    Grade = "11"
+                }, false);
 
             if (!WebSecurity.UserExists("meyern"))
                 WebSecurity.CreateUserAndAccount("meyern", "meyern", new
@@ -204,6 +227,10 @@ namespace SchoolSolution.Migrations
                     Grade = "5"
                 }, false);
 
+            context.SaveChanges();
+            #endregion
+
+            #region Add Users to Roles
             ////ADD USERS TO ROLLS
             if (!Roles.GetRolesForUser("farrantc").Contains("User"))
                 Roles.AddUsersToRoles(new[] { "farrantc" }, new[] { "User" });
@@ -221,13 +248,9 @@ namespace SchoolSolution.Migrations
                 Roles.AddUsersToRoles(new[] { "admin" }, new[] { "Administrator" });
 
             context.SaveChanges();
+            #endregion
 
-            //REMOVE LIBRARY ITEMS
-            foreach (LibraryItem li in context.LibraryItems)
-                context.LibraryItems.Remove(li);
-
-            context.SaveChanges();
-
+            #region Add Library Items
             //ADD LIBRARY ITEMS
             context.LibraryItems.Add(new Book
             {
@@ -241,9 +264,79 @@ namespace SchoolSolution.Migrations
                 Publisher = "Scribner"
             });
 
-            //REMOVE SETTINGS
-            foreach (Settings s in context.Settings)
-                context.Settings.Remove(s);
+            context.SaveChanges();
+            #endregion
+
+            #region Add Departments
+            context.Departments.Add(new Department
+            {
+                Name = "Computer Information Sciences",
+                Abbreviation = "CIS"
+            });
+            context.Departments.Add(new Department
+            {
+                Name = "Mathematics",
+                Abbreviation = "MATH"
+            });
+
+            context.SaveChanges();
+            #endregion
+
+            #region Add Courses
+
+            context.Courses.Add(new Course
+            {
+                Number = 101,
+                Name = "College Algebra",
+                Department = "Mathematics",
+                Description = "You will learn all sorts of basic algerbra necessary for your college career" 
+            });
+            context.Courses.Add(new Course
+            {
+                Number = 110,
+                Name = "Intro to Statistics",
+                Department = "Mathematics",
+                Description = "Statistics is one of the easiest math classes you will take as an undergraduate" 
+            });
+            context.Courses.Add(new Course
+            {
+                Number = 200,
+                Name = "Calculus 1",
+                Department = "Mathematics",
+                Description = "If you were smart, you would of taken this in high school"
+            });
+            context.Courses.Add(new Course
+            {
+                Number = 201,
+                Name = "Calculus 2",
+                Department = "Mathematics",
+                Description = "Prepare your anus"
+            });
+            context.Courses.Add(new Course
+            {
+                Number = 202,
+                Name = "Calculus 3",
+                Department = "Mathematics",
+                Description = "Not as bad as calculus 2, but you still might need some vaseline"
+            });
+            context.Courses.Add(new Course
+            {
+                Number = 300,
+                Name = "Discrete Mathematics",
+                Department = "Mathematics",
+                Description = "The only way you're passing this one is by putting the proofs in your calculator"
+            });
+            context.Courses.Add(new Course
+            {
+                Number = 300,
+                Name = "Data Structures",
+                Department = "Computer Information Sciences",
+                Description = "A very informative course and a neccessity for any programmer"
+            });
+
+            context.SaveChanges();
+
+            #endregion
 
             //CONFIGURE SETTINGS
             context.Settings.Add(new Settings

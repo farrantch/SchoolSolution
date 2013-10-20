@@ -1,4 +1,4 @@
-﻿@model SchoolSolution.Models.Course
+﻿@model SchoolSolution.Models.Department
 @{
     ViewBag.Title = "Details";
 }
@@ -17,30 +17,17 @@
         <legend>Account</legend>
 
         <div class="display-label">
-            @Html.DisplayNameFor(model => model.Department)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Department) 
-        </div>
-        <div class="display-label">
-            @Html.DisplayNameFor(model => model.Number)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Number) 
-        </div>
-        <div class="display-label">
             @Html.DisplayNameFor(model => model.Name)
         </div>
         <div class="display-field">
-            @Html.DisplayFor(model => model.Name) 
+            @Html.DisplayFor(model => model.Name)
         </div>
         <div class="display-label">
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.Abbreviation)
         </div>
         <div class="display-field">
-            @Html.DisplayFor(model => model.Description) 
+            @Html.DisplayFor(model => model.Abbreviation)
         </div>
-
      </fieldset>
 }
 
